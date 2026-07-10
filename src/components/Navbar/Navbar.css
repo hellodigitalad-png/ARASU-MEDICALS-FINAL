@@ -1,0 +1,262 @@
+/* =========================================
+   TOPBAR STYLES
+   ========================================= */
+.topbar {
+  background: var(--maroon);
+  color: #f3e2df;
+  font-size: 12.5px;
+}
+
+.topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 32px;
+  gap: 12px;
+}
+
+/* Sliding message strip */
+.topbar-slider {
+  position: relative;
+  flex: 1;
+  height: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.topbar-slide {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  text-decoration: none;
+  color: inherit;
+  animation: topbar-slide-in 0.5s ease;
+}
+
+.topbar-slide:is(a):hover {
+  color: var(--yellow);
+}
+
+@keyframes topbar-slide-in {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Progress dots */
+.topbar-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.topbar-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(243, 226, 223, 0.35);
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+
+.topbar-dot:hover {
+  background: rgba(243, 226, 223, 0.6);
+}
+
+.topbar-dot.is-active {
+  background: var(--yellow);
+  transform: scale(1.2);
+}
+
+
+/* =========================================
+   MAIN HEADER STYLES
+   ========================================= */
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: box-shadow .2s;
+}
+
+.site-header.is-scrolled { 
+  box-shadow: 0 6px 24px rgba(132,37,38,0.08); 
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 32px;
+}
+
+
+/* =========================================
+   BRAND & LOGO (HYBRID ABSOLUTE POSITIONING)
+   ========================================= */
+/* The structural anchor box that reserves space in the header layout */
+.brand { 
+  display: flex; 
+  align-items: center; 
+  text-decoration: none; 
+  height: 70px;                /* Match navbar height */
+  width: 130px;                /* Rigid reserved space */
+  position: relative;
+  z-index: 10;
+}
+
+.navbar-logo {
+  position: absolute;
+  left: 0;
+  top: 50%;                    /* True structural vertical center */
+  transform: translateY(-40%); /* Slightly adjusted offset to align circle cleanly */
+  height: 135px;               /* Force explicit large visual size */
+  width: auto;                 
+  object-fit: contain;
+}
+
+
+/* =========================================
+   DESKTOP NAVIGATION
+   ========================================= */
+.main-nav { 
+  display: flex; 
+  align-items: center; 
+  gap: 28px; 
+  font-size: 14.5px; 
+  font-weight: 500; 
+  color: #3a2f2e; 
+}
+
+.main-nav a { 
+  padding-bottom: 4px; 
+  border-bottom: 2px solid transparent; 
+  transition: all .2s; 
+}
+
+.main-nav a:hover { 
+  color: var(--maroon); 
+}
+
+.main-nav a.active { 
+  color: var(--maroon); 
+  border-bottom-color: var(--orange); 
+  font-weight: 700; 
+}
+
+.header-cta { display: flex; align-items: center; gap: 18px; }
+.header-phone { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--maroon); font-size: 14.5px; white-space: nowrap; }
+.header-book { display: inline-flex; }
+
+/* Menu Toggle Button */
+.menu-toggle { 
+  display: none; 
+  background: transparent; 
+  border: none; 
+  cursor: pointer; 
+  color: var(--maroon); 
+  padding: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-nav { display: none; }
+
+
+/* =========================================
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   ========================================= */
+@media (min-width: 1081px) {
+  .mobile-nav { display: none !important; }
+}
+
+@media (max-width: 1080px) {
+  .header-inner {
+    padding: 10px 20px; 
+    gap: 12px;
+  }
+
+  .brand { 
+    width: 110px;       
+    height: 60px;       
+  }
+  
+  .navbar-logo {
+    height: 115px;             /* Keeps logo prominent on tablet screen bounds */
+    top: 50%;
+    transform: translateY(-45%);
+  }
+
+  .main-nav { display: none; }
+  .header-phone { display: none; }
+  .menu-toggle { display: flex; }
+  
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px 20px;
+    border-top: 1px solid var(--line);
+    gap: 4px;
+    background: #fff; 
+  }
+  
+  .mobile-nav a { 
+    padding: 12px 4px; 
+    font-weight: 600; 
+    color: #3a2f2e; 
+    border-bottom: 1px solid var(--line); 
+  }
+  
+  .mobile-nav a.active { 
+    color: var(--maroon); 
+  }
+  
+  .mobile-phone { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    margin-top: 10px; 
+    font-weight: 700; 
+    color: var(--maroon); 
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar-inner {
+    padding: 7px 16px;
+    justify-content: flex-start; 
+  }
+
+  .topbar-dots {
+    display: none; 
+  }
+
+  .header-inner {
+    padding: 8px 16px;  
+    align-items: center;       /* Ensures burger menu icon aligns with center line */
+    height: 60px;              /* Explicit uniform header inner row height */
+  }
+  
+  .brand {
+    width: 90px;               /* Allocates layout space to keep links safe */
+    height: 100%;
+  }
+
+  .navbar-logo {
+    height: 100px;             /* Massive overlapping circle size on small viewports */
+    left: 0;                   /* Pulls it neatly back into view boundary edge */
+    top: 50%;
+    transform: translateY(-42%);/* Locks it flawlessly center vertically */
+  }
+}
