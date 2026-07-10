@@ -37,20 +37,18 @@ export default function Contact({ full = false }) {
     const textMessage = `*New Appointment Request — Arasu Medical Centre*
 
 👤 Name: ${form.name}
-
 📞 Phone: ${form.phone}
-
 ✉️ Email: ${form.email}
 
 📝 Message:
-
 ${form.message}`;
 
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
       textMessage
     )}`;
 
-    window.open(url, "_blank", "noopener,noreferrer");
+    // FIX: Changed from window.open to direct location assignment to bypass popup blockers
+    window.location.href = url;
 
     setSubmitted(true);
   };
@@ -87,96 +85,59 @@ ${form.message}`;
         <div className="contact-grid">
 
           {/* LEFT */}
-
           <div className="contact-info">
 
             <div className="contact-info-item">
-
               <div className="contact-icon">
                 <PhoneIcon size={18} />
               </div>
-
               <div>
-
                 <h4>Call Us</h4>
-
-                <a href="tel:+919868777148">
-                  +91 98687 77148 (Main)
-                </a>
-
-                <a href="tel:+919842250912">
-                  +91 98422 50912
-                </a>
-
-                <a href="tel:+917904772383">
-                  +91 79047 72383
-                </a>
-
+                <a href="tel:+919868777148">+91 9868777148</a>
+                <a href="tel:+919842250912">+91 98422 50912</a>
+                <a href="tel:+917904772383">+91 79047 72383</a>
               </div>
-
             </div>
 
             <div className="contact-info-item">
-
               <div className="contact-icon">
                 <MailIcon size={18} />
               </div>
-
               <div>
-
                 <h4>Email</h4>
-
                 <a href="mailto:arasumedicaltiruppur@gmail.com">
                   arasumedicaltiruppur@gmail.com
                 </a>
-
               </div>
-
             </div>
 
             <div className="contact-info-item">
-
               <div className="contact-icon">
                 <PinIcon size={18} />
               </div>
-
               <div>
-
                 <h4>Location</h4>
-
-                <p>
-                  Arasu Medical Centre,
-                  Tiruppur, Tamil Nadu
-                </p>
-
+                <p>Arasu Medical Centre, Tiruppur, Tamil Nadu</p>
               </div>
-
             </div>
 
             <div className="contact-info-item">
-
               <div className="contact-icon">
                 <ClockIcon size={18} />
               </div>
-
               <div>
-
                 <h4>Working Hours</h4>
-
                 <p>
                   OPD: Monday - Sunday, 8:00 AM - 9:00 PM
                   <br />
                   Emergency Care: Open 24/7
                 </p>
-
               </div>
-
             </div>
 
           </div>
 
           {/* RIGHT */}
-
           <form
             className="contact-form"
             onSubmit={handleSubmit}
@@ -184,28 +145,19 @@ ${form.message}`;
           >
 
             {submitted ? (
-
               <div className="contact-success">
-
                 <div className="contact-success-icon">
                   <CheckIcon size={28} />
                 </div>
-
-                <h3>
-                  Request Sent
-                </h3>
-
+                <h3>Request Sent</h3>
                 <p>
-                  Your appointment request has been sent.
-                  Our team will get back to you shortly.
+                  Your appointment request has been sent. Our team will get back to you shortly.
                 </p>
-
                 <button
                   type="button"
                   className="btn btn-outline"
                   onClick={() => {
                     setSubmitted(false);
-
                     setForm({
                       name: "",
                       phone: "",
@@ -216,19 +168,12 @@ ${form.message}`;
                 >
                   Send Another Request
                 </button>
-
               </div>
-
             ) : (
-
               <>
-
                 <div className="form-row">
-
                   <div className="form-group">
-
                     <label htmlFor="name">Full Name</label>
-
                     <input
                       id="name"
                       name="name"
@@ -237,13 +182,10 @@ ${form.message}`;
                       placeholder="Your Name"
                       required
                     />
-
                   </div>
 
                   <div className="form-group">
-
                     <label htmlFor="phone">Phone</label>
-
                     <input
                       id="phone"
                       name="phone"
@@ -252,15 +194,11 @@ ${form.message}`;
                       placeholder="+91 XXXXX XXXXX"
                       required
                     />
-
                   </div>
-
                 </div>
 
                 <div className="form-group">
-
                   <label htmlFor="email">Email</label>
-
                   <input
                     type="email"
                     id="email"
@@ -270,13 +208,10 @@ ${form.message}`;
                     placeholder="you@example.com"
                     required
                   />
-
                 </div>
 
                 <div className="form-group">
-
                   <label htmlFor="message">Message</label>
-
                   <textarea
                     id="message"
                     name="message"
@@ -286,18 +221,12 @@ ${form.message}`;
                     placeholder="Tell us briefly about your health concern"
                     required
                   />
-
                 </div>
 
-                <button
-                  type="submit"
-                  className="btn btn-primary btn-block"
-                >
+                <button type="submit" className="btn btn-primary btn-block">
                   Book Appointment
                 </button>
-
               </>
-
             )}
 
           </form>

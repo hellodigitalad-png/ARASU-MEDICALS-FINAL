@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
-  ArrowIcon,
   ShieldIcon,
   StarIcon,
 } from "../../icons.jsx";
@@ -40,16 +39,9 @@ export default function Hero() {
             facilities, advanced treatments, and compassionate patient care.
           </p>
 
-          <div className="hero-actions">
-            <Link to="/contact#appointment" className="btn btn-primary">
-              Book Appointment
-              <ArrowIcon size={18} />
-            </Link>
-
-            <Link to="/contact" className="btn btn-outline">
-              Contact Us
-            </Link>
-          </div>
+          <Link to="/contact" className="btn btn-outline">
+            Contact Us
+          </Link>
 
           <div className="hero-trust">
 
