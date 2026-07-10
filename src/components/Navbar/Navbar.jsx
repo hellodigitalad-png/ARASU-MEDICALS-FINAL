@@ -17,25 +17,23 @@ import SiteLogo from "../asset/logo.png";
 const TOPBAR_MESSAGES = [
   {
     icon: <ClockIcon size={14} />,
-    text: "OPD: Mon – Sun, 8:00 AM – 9:00 PM • Emergency Care 24/7",
+    text: " Mon – Sun, 8:00 AM – 9:00 PM • Emergency Care 24/7",
   },
   {
     icon: null,
-    text: "28+ Years of Trusted Healthcare in Tiruppur",
+    text: "Free home Delivery",
   },
   {
     icon: null,
-    text: "4 Branches Across Tiruppur",
+    text: "Free home Delivery",
   },
   {
     icon: null,
-    text: "+91 98687 77148",
-    href: "tel:+919868777148",
+    text: "Free home Delivery",
   },
   {
     icon: null,
-    text: "arasumedicaltiruppur@gmail.com",
-    href: "mailto:arasumedicaltiruppur@gmail.com",
+    text: "Free home Delivery",
   },
 ];
 
