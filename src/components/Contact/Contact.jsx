@@ -32,22 +32,28 @@ export default function Contact({ full = false }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Clean, formatted number with no spaces or symbols
     const whatsappNumber = "919868777148";
 
     const textMessage = `*New Appointment Request — Arasu Medical Centre*
 
-👤 Name: ${form.name}
-📞 Phone: ${form.phone}
-✉️ Email: ${form.email}
+👤 Name: ${form.name.trim()}
+📞 Phone: ${form.phone.trim()}
+✉️ Email: ${form.email.trim()}
 
 📝 Message:
-${form.message}`;
+${form.message.trim()}`;
 
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      textMessage
-    )}`;
+    // Safely encode parameters to prevent URL corruption
+    const params = new URLSearchParams({
+      phone: whatsappNumber,
+      text: textMessage,
+    });
 
-    // FIX: Changed from window.open to direct location assignment to bypass popup blockers
+    // Using the official WhatsApp API link structure
+    const url = `https://api.whatsapp.com/send?${params.toString()}`;
+
+    // Direct redirection to avoid browser popup blockers
     window.location.href = url;
 
     setSubmitted(true);
@@ -65,7 +71,6 @@ ${form.message}`;
 
         {!full && (
           <div className="section-head">
-
             <div
               className="eyebrow"
               style={{ margin: "0 auto 16px" }}
@@ -78,13 +83,12 @@ ${form.message}`;
               Book an appointment,
               <span> talk to our team.</span>
             </h2>
-
           </div>
         )}
 
         <div className="contact-grid">
 
-          {/* LEFT */}
+          {/* LEFT SIDE - CONTACT INFO */}
           <div className="contact-info">
 
             <div className="contact-info-item">
@@ -93,7 +97,7 @@ ${form.message}`;
               </div>
               <div>
                 <h4>Call Us</h4>
-                <a href="tel:+919868777148">+91 9868777148</a>
+                <a href="tel:+919868777148">+91 9868777148 (Main)</a>
                 <a href="tel:+919842250912">+91 98422 50912</a>
                 <a href="tel:+917904772383">+91 79047 72383</a>
               </div>
@@ -137,7 +141,7 @@ ${form.message}`;
 
           </div>
 
-          {/* RIGHT */}
+          {/* RIGHT SIDE - FORM */}
           <form
             className="contact-form"
             onSubmit={handleSubmit}
@@ -233,6 +237,7 @@ ${form.message}`;
 
         </div>
 
+        {/* MAP SECTION */}
         <div className="contact-map">
           <iframe
             title="Arasu Medical Centre location map"

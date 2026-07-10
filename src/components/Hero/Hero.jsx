@@ -25,7 +25,7 @@ export default function Hero() {
 
           <div className="eyebrow">
             <span className="dot"></span>
-            Arasu Medical Centre, Tiruppur
+            Arasu Medical , Tiruppur
           </div>
 
           <h1>
